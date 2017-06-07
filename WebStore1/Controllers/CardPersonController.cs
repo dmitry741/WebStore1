@@ -11,7 +11,7 @@ namespace WebStore1.Controllers
         // GET: CardPerson
         public ActionResult Index()
         {
-            int id = 0;
+            int id = Int32.Parse(Request.Params["id"]);
             IEnumerable<Models.MyPerson> list = Code.Company.GetPersons();
             Models.MyPerson person = list.ElementAt(id);
 

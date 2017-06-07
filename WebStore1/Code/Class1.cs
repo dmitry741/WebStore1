@@ -13,6 +13,7 @@ namespace WebStore1.Code
             {
                 new Models.MyPerson
                 {
+                    id = 0,
                     FirstName = "Dmitry",
                     LastName = "Pavlov",
                     age = 43,
@@ -21,6 +22,7 @@ namespace WebStore1.Code
                 },
                 new Models.MyPerson
                 {
+                    id = 1,
                     FirstName = "Petr",
                     LastName = "Ivanov",
                     age = 30,
@@ -29,6 +31,7 @@ namespace WebStore1.Code
                 },
                 new Models.MyPerson
                 {
+                    id = 2,
                     FirstName = "Lubov",
                     LastName = "Petrova",
                     age = 31,
