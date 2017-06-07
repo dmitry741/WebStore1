@@ -1,0 +1,19 @@
+﻿@model IEnumerable<WebStore1.Models.MyPerson>
+
+@{
+    ViewBag.Title = "Employees";
+}
+
+<h2>Our Employees</h2>
+
+<table class="table">
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>@item.FirstName</td>
+        <td>@item.LastName</td>
+        <td>@item.age</td>
+    </tr>
+    }
+</table>
+
