@@ -9,11 +9,13 @@ namespace WebStore1.Code
     {
         static public IEnumerable<Models.MyPerson> GetPersons()
         {
+            int personalId = 0;
+
             var persons = new List<Models.MyPerson>
             {
                 new Models.MyPerson
                 {
-                    id = 0,
+                    id = personalId++,
                     FirstName = "Dmitry",
                     LastName = "Pavlov",
                     age = 43,
@@ -22,7 +24,7 @@ namespace WebStore1.Code
                 },
                 new Models.MyPerson
                 {
-                    id = 1,
+                    id = personalId++,
                     FirstName = "Petr",
                     LastName = "Ivanov",
                     age = 30,
@@ -31,9 +33,9 @@ namespace WebStore1.Code
                 },
                 new Models.MyPerson
                 {
-                    id = 2,
+                    id = personalId++,
                     FirstName = "Lubov",
-                    LastName = "Petrova",
+                    LastName = "Sergeeva",
                     age = 31,
                     position = "Front-end developer",
                     hobbies = "Travelling"

@@ -13,7 +13,7 @@
         <td>@item.FirstName</td>
         <td>@item.LastName</td>
         <td>@item.age</td>
-        <td><a href="\CardPerson\?id=@item.id">Card</a></td>
+        <td><a href="@Url.Action("Index", "CardPerson", new { x = @item.id })">Card</td>
     </tr>
     }
 </table>
