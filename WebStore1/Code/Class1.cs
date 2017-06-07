@@ -20,7 +20,7 @@ namespace WebStore1.Code
                     LastName = "Pavlov",
                     age = 43,
                     position = "Software developer",
-                    hobbies = "Cars"
+                    hobbies = "Books, airplanes"
                 },
                 new Models.MyPerson
                 {
@@ -29,7 +29,7 @@ namespace WebStore1.Code
                     LastName = "Ivanov",
                     age = 30,
                     position = "Web designer",
-                    hobbies = "Running"
+                    hobbies = "Running, birds"
                 },
                 new Models.MyPerson
                 {
@@ -38,7 +38,7 @@ namespace WebStore1.Code
                     LastName = "Sergeeva",
                     age = 31,
                     position = "Front-end developer",
-                    hobbies = "Travelling"
+                    hobbies = "Travelling, cinema"
                 }
             };
 
