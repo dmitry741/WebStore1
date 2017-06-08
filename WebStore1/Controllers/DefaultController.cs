@@ -9,9 +9,24 @@ namespace WebStore1.Controllers
     public class DefaultController : Controller
     {        
 
-        public ActionResult Index()
+        public ActionResult Index(int? x)
         {
-            return View(Code.Company.GetPersons());
+            IEnumerable<Models.MyPerson> persons = Code.Company.GetPersons();
+            var list = persons;
+
+            if (x.HasValue)
+            {               
+                if (x.Value == 1)
+                {
+                    list = persons.OrderBy(p => p.LastName);
+                }
+                else if (x.Value == 2)
+                {
+                    list = persons.OrderByDescending(p => p.LastName);
+                }
+            }
+
+            return View(list);
         }
     }
 }

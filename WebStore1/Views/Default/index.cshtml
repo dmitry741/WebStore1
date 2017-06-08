@@ -13,8 +13,13 @@
         <td>@item.FirstName</td>
         <td>@item.LastName</td>
         <td>@item.age</td>
-        <td><a href="@Url.Action("Index", "CardPerson", new { x = @item.id })">Card</td>
+        <td><a href="@Url.Action("Index", "CardPerson", new { x = @item.id })">Card</a></td>
     </tr>
     }
 </table>
+<hr />
+
+<p>Sort by Last name</p>
+<a class="btn btn-primary" href="@Url.Action("Index", "Default", new { x = 1 })" role="button">A->Z</a>
+<a class="btn btn-primary" href="@Url.Action("Index", "Default", new { x = 2 })" role="button">Z->A</a>
 
