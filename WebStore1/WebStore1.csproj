@@ -118,7 +118,6 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Code\Class1.cs" />
-    <Compile Include="Controllers\CardPersonController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -130,7 +129,8 @@
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\CardPerson\index.cshtml" />
+    <Content Include="Views\Default\AddEditPerson.cshtml" />
+    <Content Include="Views\Default\CardPerson.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

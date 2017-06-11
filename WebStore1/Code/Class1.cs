@@ -7,7 +7,27 @@ namespace WebStore1.Code
 {
     public class Company
     {
-        static public IEnumerable<Models.MyPerson> GetPersons()
+        static private IEnumerable<Models.MyPerson> s_persons;
+
+        static public IEnumerable<Models.MyPerson> Persons
+        {
+            get
+            {
+                if (s_persons == null)
+                    s_persons = GetPersons();
+
+                return s_persons;
+            }
+        }
+
+        static public void Add(Models.MyPerson person)
+        {
+            var newId = Persons.Max(x => x.id) + 1;
+            person.id = newId;
+            s_persons = Persons.Concat(new[] { person });
+        }
+
+        static private IEnumerable<Models.MyPerson> GetPersons()
         {
             int personalId = 0;
 

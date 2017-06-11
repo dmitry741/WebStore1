@@ -6,6 +6,10 @@
 
 <h2>Our Employees</h2>
 
+<a class="btn btn-success" href="@Url.Action("AddEditPerson", "Default")" role="button">Add new person</a>
+<br />
+<br />
+
 <table class="table">
     @foreach (var item in Model)
     {
@@ -13,7 +17,7 @@
         <td>@item.FirstName</td>
         <td>@item.LastName</td>
         <td>@item.age</td>
-        <td><a href="@Url.Action("Index", "CardPerson", new { x = @item.id })">Card</a></td>
+        <td><a href="@Url.Action("CardPerson", "Default", new { x = @item.id })">Card</a></td>
     </tr>
     }
 </table>

@@ -8,22 +8,27 @@ namespace WebStore1.Controllers
 {
     public class DefaultController : Controller
     {
-        static IEnumerable<Models.MyPerson> s_persons;
-
-        public static IEnumerable<Models.MyPerson> persons
+        
+        public ActionResult AddEditPerson()
         {
-            get
-            {
-                if (s_persons == null)
-                    s_persons = Code.Company.GetPersons();
+            return View();
+        }
 
-                return s_persons;
+        [HttpPost]
+        public ActionResult SaveAdd(Models.MyPerson model)
+        {
+            if (ModelState.IsValid)
+            {
+                Code.Company.Add(model);
+                return RedirectToAction("Index");
             }
+
+            return View("AddEditPerson", model);
         }
 
         public ActionResult Index(int? x)
         {
-            IEnumerable<Models.MyPerson> emploees = persons;
+            IEnumerable<Models.MyPerson> emploees = Code.Company.Persons;
             var list = emploees;
 
             if (x.HasValue)
@@ -39,6 +44,21 @@ namespace WebStore1.Controllers
             }
 
             return View(list);
+        }
+
+        public ActionResult CardPerson(int? x)
+        {
+            int id = x.HasValue ? x.Value : 0;
+            IEnumerable<Models.MyPerson> list = Code.Company.Persons;
+
+            if (id < 0 || id >= list.Count())
+            {
+                id = 0;
+            }
+
+            Models.MyPerson person = list.FirstOrDefault(p => p.id == id);
+
+            return View(person);
         }
     }
 }
