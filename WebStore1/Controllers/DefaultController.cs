@@ -7,22 +7,34 @@ using System.Web.Mvc;
 namespace WebStore1.Controllers
 {
     public class DefaultController : Controller
-    {        
+    {
+        static IEnumerable<Models.MyPerson> s_persons;
+
+        public static IEnumerable<Models.MyPerson> persons
+        {
+            get
+            {
+                if (s_persons == null)
+                    s_persons = Code.Company.GetPersons();
+
+                return s_persons;
+            }
+        }
 
         public ActionResult Index(int? x)
         {
-            IEnumerable<Models.MyPerson> persons = Code.Company.GetPersons();
-            var list = persons;
+            IEnumerable<Models.MyPerson> emploees = persons;
+            var list = emploees;
 
             if (x.HasValue)
             {               
                 if (x.Value == 1)
                 {
-                    list = persons.OrderBy(p => p.LastName);
+                    list = emploees.OrderBy(p => p.LastName);
                 }
                 else if (x.Value == 2)
                 {
-                    list = persons.OrderByDescending(p => p.LastName);
+                    list = emploees.OrderByDescending(p => p.LastName);
                 }
             }
 

@@ -19,7 +19,7 @@ namespace WebStore1.Controllers
                 id = 0;
             }
 
-            Models.MyPerson person = list.ElementAt(id);
+            Models.MyPerson person = list.FirstOrDefault(p => p.id == id);
 
             return View(person);
         }
