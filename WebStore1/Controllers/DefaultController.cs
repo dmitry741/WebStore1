@@ -9,7 +9,7 @@ namespace WebStore1.Controllers
     public class DefaultController : Controller
     {
         
-        public ActionResult AddEditPerson()
+        public ActionResult AddPerson()
         {
             return View();
         }
