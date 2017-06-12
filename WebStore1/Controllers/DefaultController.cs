@@ -26,6 +26,16 @@ namespace WebStore1.Controllers
             return View("AddEditPerson", model);
         }
 
+        public ActionResult Delete(int? id)
+        {
+            if (id.HasValue)
+            {
+                Code.Company.Delete(id.Value);
+            }
+
+            return RedirectToAction("Index");
+        }
+
         public ActionResult Index(int? x)
         {
             IEnumerable<Models.MyPerson> emploees = Code.Company.Persons;
@@ -50,12 +60,6 @@ namespace WebStore1.Controllers
         {
             int id = x.HasValue ? x.Value : 0;
             IEnumerable<Models.MyPerson> list = Code.Company.Persons;
-
-            if (id < 0 || id >= list.Count())
-            {
-                id = 0;
-            }
-
             Models.MyPerson person = list.FirstOrDefault(p => p.id == id);
 
             return View(person);

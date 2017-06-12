@@ -22,9 +22,15 @@ namespace WebStore1.Code
 
         static public void Add(Models.MyPerson person)
         {
-            var newId = Persons.Max(x => x.id) + 1;
+            var newId = (Persons.Count() > 0) ? Persons.Max(x => x.id) + 1 : 0;
             person.id = newId;
             s_persons = Persons.Concat(new[] { person });
+        }
+
+        static public void Delete(int id)
+        {
+            Models.MyPerson person = Persons.FirstOrDefault(x => x.id == id);
+            s_persons = Persons.Except(new[] { person });
         }
 
         static private IEnumerable<Models.MyPerson> GetPersons()
