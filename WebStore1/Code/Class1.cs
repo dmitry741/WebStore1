@@ -33,6 +33,19 @@ namespace WebStore1.Code
             s_persons = Persons.Except(new[] { person });
         }
 
+        static public Models.MyPerson GetById(int id)
+        {
+            Models.MyPerson person = Persons.FirstOrDefault(x => x.id == id);
+            return person;
+        }
+
+        static public void Edit(Models.MyPerson person)
+        {
+            int id = person.id;
+            Delete(id);
+            Add(person);
+        }
+
         static private IEnumerable<Models.MyPerson> GetPersons()
         {
             int personalId = 0;
