@@ -29,7 +29,7 @@ namespace WebStore1.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View("AddEditPerson", model);
+            return View("AddPerson", model);
         }
 
         [HttpPost]
@@ -41,7 +41,7 @@ namespace WebStore1.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View("AddEditPerson", model);
+            return View("EditPerson", model);
         }
 
         public ActionResult Delete(int? id)
