@@ -39,7 +39,17 @@ namespace WebStore1.Controllers
             }
 
             FormsAuthentication.SetAuthCookie(auth.Login, true);
-            FormsAuthentication.SignOut();
+            //FormsAuthentication.SignOut();
+
+            return Redirect(FormsAuthentication.DefaultUrl);
+        }
+
+        public ActionResult SignOut(AuthentificationParams auth)
+        {
+            if (Request.IsAuthenticated)
+            {
+                FormsAuthentication.SignOut();
+            }
 
             return Redirect(FormsAuthentication.DefaultUrl);
         }

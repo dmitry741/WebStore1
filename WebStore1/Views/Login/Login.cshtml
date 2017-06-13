@@ -4,35 +4,47 @@
         Authorisation Form
     </h3>
 </div>
-@using (Html.BeginForm("Login", "Login", FormMethod.Post))
+
+@if (!Request.IsAuthenticated)
 {
-    <div>
-        <table class="table">
-            <tr>
-                <td>
-                    @Html.LabelFor(x => x.Login)
-                </td>
-                <td>
-                    @Html.EditorFor(x => x.Login)
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    @Html.LabelFor(x => x.Password)
-                </td>
-                <td>
-                    @Html.PasswordFor(x => x.Password)
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <input type="submit" value="Authentification" class="btn btn-success" />
-                </td>
-            </tr>
-        </table>
+    using (Html.BeginForm("Login", "Login", FormMethod.Post))
+    {
         <div>
-            @Html.DisplayFor(x => x.ErrorMessage, new { style = "color:red" })
+            <table class="table">
+                <tr>
+                    <td>
+                        @Html.LabelFor(x => x.Login)
+                    </td>
+                    <td>
+                        @Html.EditorFor(x => x.Login)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(x => x.Password)
+                    </td>
+                    <td>
+                        @Html.PasswordFor(x => x.Password)
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="Authentification" class="btn btn-success" />
+                    </td>
+                </tr>
+            </table>
+            <div>
+                @Html.DisplayFor(x => x.ErrorMessage, new { style = "color:red" })
+            </div>
         </div>
-    </div>
+    }
 }
+else
+{
+    <a class="btn btn-primary" href="@Url.Action("SignOut", "Login")" role="button">Sign out</a>
+}
+
+<br />
+<br />
+<a href="@Url.Action("Index", "Default")">Go back to the main page</a>
 

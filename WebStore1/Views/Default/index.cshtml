@@ -6,6 +6,15 @@
 
 <h2>Our Employees</h2>
 
+@if (Request.IsAuthenticated)
+{
+    <p>You are the authentificated user</p>
+}
+else
+{
+    <p>You are guest</p>
+}
+
 <a class="btn btn-success" href="@Url.Action("AddPerson", "Default")" role="button">Add new person</a>
 <br />
 <br />

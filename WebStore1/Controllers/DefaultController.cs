@@ -73,7 +73,7 @@ namespace WebStore1.Controllers
                 }
             }
 
-            return View(list);
+            return View(list);                                                            
         }
 
         [AllowAnonymous]
