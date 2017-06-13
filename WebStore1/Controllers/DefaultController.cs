@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace WebStore1.Controllers
 {
+    [Authorize]
     public class DefaultController : Controller
     {
         
@@ -54,6 +55,7 @@ namespace WebStore1.Controllers
             return RedirectToAction("Index");
         }
 
+        [AllowAnonymous]
         public ActionResult Index(int? x)
         {
             IEnumerable<Models.MyPerson> emploees = Code.Company.Persons;
@@ -74,6 +76,7 @@ namespace WebStore1.Controllers
             return View(list);
         }
 
+        [AllowAnonymous]
         public ActionResult CardPerson(int? x)
         {
             int id = x.HasValue ? x.Value : 0;

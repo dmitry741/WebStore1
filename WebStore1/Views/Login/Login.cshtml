@@ -1,0 +1,38 @@
+﻿@model WebStore1.Models.AuthentificationParams
+<div style="text-align: center">
+    <h3>
+        Authorisation Form
+    </h3>
+</div>
+@using (Html.BeginForm("Login", "Login", FormMethod.Post))
+{
+    <div>
+        <table class="table">
+            <tr>
+                <td>
+                    @Html.LabelFor(x => x.Login)
+                </td>
+                <td>
+                    @Html.EditorFor(x => x.Login)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(x => x.Password)
+                </td>
+                <td>
+                    @Html.PasswordFor(x => x.Password)
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="Authentification" class="btn btn-success" />
+                </td>
+            </tr>
+        </table>
+        <div>
+            @Html.DisplayFor(x => x.ErrorMessage, new { style = "color:red" })
+        </div>
+    </div>
+}
+
