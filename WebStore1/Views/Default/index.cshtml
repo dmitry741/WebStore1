@@ -8,12 +8,16 @@
 
 @if (Request.IsAuthenticated)
 {
-    <p>You are the authentificated user</p>
+    <p>Hello, @Session["auth"]</p>
 }
 else
 {
     <p>You are guest</p>
 }
+<a href="@Url.Action("Login", "Login")">Authentification form</a>
+
+<br />
+<br />
 
 <a class="btn btn-success" href="@Url.Action("AddPerson", "Default")" role="button">Add new person</a>
 <br />
@@ -37,4 +41,3 @@ else
 <p>Sort by Last name</p>
 <a class="btn btn-primary btn-xs" href="@Url.Action("Index", "Default", new { x = 1 })" role="button">A->Z</a>
 <a class="btn btn-primary btn-xs" href="@Url.Action("Index", "Default", new { x = 2 })" role="button">Z->A</a>
-

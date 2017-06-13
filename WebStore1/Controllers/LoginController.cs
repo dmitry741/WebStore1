@@ -38,8 +38,7 @@ namespace WebStore1.Controllers
                 return View(auth);
             }
 
-            FormsAuthentication.SetAuthCookie(auth.Login, true);
-            //FormsAuthentication.SignOut();
+            FormsAuthentication.SetAuthCookie(auth.Login, true);            
 
             return Redirect(FormsAuthentication.DefaultUrl);
         }
@@ -59,7 +58,10 @@ namespace WebStore1.Controllers
             var user = users.FirstOrDefault(x => x.Login.Trim().ToLower() == auth.Login.Trim().ToLower());
 
             if (user != default(User))
+            {
+                Session["auth"] = user;
                 return auth.Password.Trim().ToLower() == user.Password.Trim().ToLower();
+            }
 
             return false;
         }
