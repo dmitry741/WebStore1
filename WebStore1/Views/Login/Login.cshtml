@@ -34,7 +34,10 @@
                 </tr>
             </table>
             <div>
-                @Html.DisplayFor(x => x.ErrorMessage, new { style = "color:red" })
+                @if (!string.IsNullOrEmpty(@Model.ErrorMessage))
+                {
+                    <div class="alert alert-danger" role="alert">@Model.ErrorMessage</div>
+                }
             </div>
         </div>
     }

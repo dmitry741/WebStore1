@@ -10,9 +10,10 @@ namespace WebStore1.Controllers
 {
     public class LoginController : Controller
     {
-        private static List<User> users = new List<User>
+        public static List<User> users = new List<User>
         {
-            new User { Login = "admin", Password = "12345" }
+            new User { Login = "admin", Password = "12345" },
+            new User { Login = "user1", Password = "12345" }
         };
 
         public LoginController()
@@ -30,7 +31,10 @@ namespace WebStore1.Controllers
         public ActionResult Login_(AuthentificationParams auth)
         {
             if (!ModelState.IsValid)
+            {
+                auth.ErrorMessage = "Authentification error. Check for input parameters";
                 return View(auth);
+            }                
 
             if (!CheckAuthParams(auth))
             {
@@ -38,8 +42,8 @@ namespace WebStore1.Controllers
                 return View(auth);
             }
 
-            FormsAuthentication.SetAuthCookie(auth.Login, true);            
-
+            FormsAuthentication.SetAuthCookie(auth.Login, true);
+           
             return Redirect(FormsAuthentication.DefaultUrl);
         }
 
@@ -60,11 +64,10 @@ namespace WebStore1.Controllers
             if (user != default(User))
             {
                 Session["auth"] = user;
-                return auth.Password.Trim().ToLower() == user.Password.Trim().ToLower();
+                return auth.Password.Trim() == user.Password.Trim();
             }
 
             return false;
         }
-
     }
 }

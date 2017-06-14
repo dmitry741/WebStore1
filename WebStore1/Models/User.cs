@@ -9,16 +9,14 @@ namespace WebStore1.Models
     {
         public string Login { get; set; }
 
-        public string Password { get; set; }
-
-        public override string ToString()
-        {
-            return Login;
-        }
+        public string Password { get; set; }        
     }
 
     public class User : SimpleUser
     {
-
+        public override string ToString()
+        {
+            return Login;
+        }
     }
 }

@@ -8,13 +8,12 @@
 
 @if (Request.IsAuthenticated)
 {
-    <p>Hello, @Session["auth"]</p>
+    <p>Hello, @Session["auth"]. <a href="@Url.Action("SignOut", "Login")" role="button">Sign out</a></p>
 }
 else
 {
-    <p>You are guest</p>
+    <p>You are guest, <a href="@Url.Action("Login", "Login")">Sign in</a></p>
 }
-<a href="@Url.Action("Login", "Login")">Authentification form</a>
 
 <br />
 <br />
