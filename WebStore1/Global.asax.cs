@@ -12,7 +12,13 @@ namespace WebStore1
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            RouteConfig.RegisterRoutes(RouteTable.Routes);            
+        }
+
+        public void Session_Start()
+        {
+            var cookie = Request.Cookies.Get("auth1");
+            Session["auth"] = (cookie != null) ? Request.Cookies.Get("auth1").Value : string.Empty;
         }
     }
 }
