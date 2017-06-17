@@ -46,23 +46,21 @@ namespace WebStore1.Controllers
 
             HttpCookie cookie = Request.Cookies.Get("auth1");
 
-            if (cookie == null)
+            if (cookie != null)
             {
-                cookie = new HttpCookie("auth1");
-
-                // Set value of cookie to current user name.
-                cookie.Value = auth.Login;
-
-                // Set cookie to expire in 10 minutes.
-                cookie.Expires = DateTime.Now.AddMinutes(120d);
-
-                // Insert the cookie in the current HttpResponse.
-                Response.Cookies.Add(cookie);
+                Request.Cookies.Remove("auth1");
             }
-            else
-            {
-                cookie.Value = auth.Login;
-            }
+ 
+            cookie = new HttpCookie("auth1");
+
+            // Set value of cookie to current user name.
+            cookie.Value = auth.Login;
+
+            // Set cookie to expire in 10 minutes.
+            cookie.Expires = DateTime.Now.AddMinutes(120d);
+
+            // Insert the cookie in the current HttpResponse.
+            Response.Cookies.Add(cookie);
 
             Session["auth"] = auth.Login;
 
@@ -79,7 +77,7 @@ namespace WebStore1.Controllers
 
                 if (cookie != null)
                 {
-                    cookie.Value = string.Empty;
+                    Request.Cookies.Remove("auth1");
                 }
             }
 
@@ -96,16 +94,6 @@ namespace WebStore1.Controllers
             }
 
             return false;
-        }
-
-        public string AuthUser
-        {
-            get
-            {
-                var cookie = Request.Cookies.Get("auth1");
-
-                return (cookie != null) ? Request.Cookies.Get("auth1").Value : string.Empty;
-            }
         }
     }
 }
