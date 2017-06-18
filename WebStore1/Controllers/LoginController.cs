@@ -43,7 +43,6 @@ namespace WebStore1.Controllers
             }
 
             FormsAuthentication.SetAuthCookie(auth.Login, true);
-
             HttpCookie cookie = Request.Cookies.Get("auth1");
 
             if (cookie != null)
@@ -72,7 +71,6 @@ namespace WebStore1.Controllers
             if (Request.IsAuthenticated)
             {
                 FormsAuthentication.SignOut();
-
                 HttpCookie cookie = Request.Cookies.Get("auth1");
 
                 if (cookie != null)
