@@ -44,6 +44,16 @@ namespace WebStore.DAL.Migrations
                  LastName = "Serggeva",
                  position = "front-end developer",
                  hobbies = "travelling"
+             },
+
+             new MyPerson
+             {
+                 id = 4,
+                 age = 11,
+                 FirstName = "Tomofeus",
+                 LastName = "Pavlov",
+                 position = "school boy",
+                 hobbies = "jets"
              }
              );
 

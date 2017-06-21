@@ -58,6 +58,11 @@ namespace WebStore1.Controllers
         [AllowAnonymous]
         public ActionResult Index(int? x)
         {
+            // TODO:
+            WebStore.DAL.DbContext.WebStoreContext wc = new WebStore.DAL.DbContext.WebStoreContext();
+            var persons = wc.Persons;
+            var myListPersons = persons.ToList();
+
             IEnumerable<Models.MyPerson> emploees = Code.Company.Persons;
             var list = emploees;
 
