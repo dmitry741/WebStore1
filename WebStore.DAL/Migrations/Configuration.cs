@@ -41,7 +41,7 @@ namespace WebStore.DAL.Migrations
                  id = 3,
                  age = 22,
                  FirstName = "Lubov",
-                 LastName = "Serggeva",
+                 LastName = "Sergeva",
                  position = "front-end developer",
                  hobbies = "travelling"
              },
@@ -50,7 +50,7 @@ namespace WebStore.DAL.Migrations
              {
                  id = 4,
                  age = 11,
-                 FirstName = "Tomofeus",
+                 FirstName = "Timofeus",
                  LastName = "Pavlov",
                  position = "school boy",
                  hobbies = "jets"
