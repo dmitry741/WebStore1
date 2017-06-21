@@ -21,13 +21,4 @@ namespace WebStore.DAL.DbContext
             modelBuilder.Configurations.Add(new UserConfiguration());
         }
     }
-
-    //public class DatabaseInitializer
-    //    : DropCreateDatabaseIfModelChanges<WebStoreContext>
-    //{
-    //    public override void InitializeDatabase(WebStoreContext context)
-    //    {
-
-    //    }
-    //}
 }
