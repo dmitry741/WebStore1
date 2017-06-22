@@ -133,7 +133,6 @@
     </Compile>
     <Compile Include="Models\AuthentificationParams.cs" />
     <Compile Include="Models\myperson.cs" />
-    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

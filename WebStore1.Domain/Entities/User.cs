@@ -14,6 +14,11 @@ namespace WebStore1.Domain.Entities
         public int Id { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
+
+        public override string ToString()
+        {
+            return Login;
+        }
     }
 
     public class UserConfiguration : EntityTypeConfiguration<User>

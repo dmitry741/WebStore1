@@ -10,11 +10,14 @@ namespace WebStore1.Controllers
 {
     public class LoginController : Controller
     {
-        public static List<User> users = new List<User>
+        public List<Domain.Entities.User> users
         {
-            new User { Login = "admin", Password = "12345" },
-            new User { Login = "user1", Password = "12345" }
-        };
+            get
+            {
+                WebStore.DAL.DbContext.WebStoreContext wc = new WebStore.DAL.DbContext.WebStoreContext();
+                return wc.Users.ToList();
+            }
+        }
 
         public LoginController()
         {
@@ -23,7 +26,7 @@ namespace WebStore1.Controllers
         [HttpGet]
         public ActionResult Login()
         {
-            return View(new AuthentificationParams { });
+            return View(new AuthentificationParams());
         }
 
         [HttpPost]
@@ -86,12 +89,7 @@ namespace WebStore1.Controllers
         {
             var user = users.FirstOrDefault(x => x.Login.Trim().ToLower() == auth.Login.Trim().ToLower());
 
-            if (user != default(User))
-            {
-                return auth.Password.Trim() == user.Password.Trim();
-            }
-
-            return false;
+            return (user != default(Domain.Entities.User)) ? auth.Password.Trim() == user.Password.Trim() : false;
         }
     }
 }
