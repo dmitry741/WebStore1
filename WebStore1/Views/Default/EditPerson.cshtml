@@ -1,4 +1,4 @@
-﻿@model WebStore1.Domain.Entities.MyPerson
+﻿@model WebStore1.Models.MyPerson
 
 @{
     ViewBag.Title = "Edit Person";
@@ -11,7 +11,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>New person</h4>
+        <h4>Edit person</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.id)

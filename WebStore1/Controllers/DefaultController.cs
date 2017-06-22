@@ -19,17 +19,36 @@ namespace WebStore1.Controllers
         {
             WebStore.DAL.DbContext.WebStoreContext wc = new WebStore.DAL.DbContext.WebStoreContext();
             Domain.Entities.MyPerson model = wc.Persons.FirstOrDefault(x => x.id == id);
+            Models.MyPerson ep = new Models.MyPerson
+            {
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                age = model.age,
+                position = model.position,
+                hobbies = model.hobbies,
+                id = model.id
+            };
 
-            return View(model);
+            return View(ep);
         }
 
         [HttpPost]
-        public ActionResult SaveAdd(Domain.Entities.MyPerson model)
+        public ActionResult SaveAdd(Models.MyPerson model)
         {
             if (ModelState.IsValid)
             {
                 WebStore.DAL.DbContext.WebStoreContext wc = new WebStore.DAL.DbContext.WebStoreContext();
-                wc.Persons.Add(model);
+
+                Domain.Entities.MyPerson ep = new Domain.Entities.MyPerson
+                {
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    age = model.age,
+                    position = model.position,
+                    hobbies = model.hobbies                    
+                };
+
+                wc.Persons.Add(ep);
                 int count = wc.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -38,7 +57,7 @@ namespace WebStore1.Controllers
         }
 
         [HttpPost]
-        public ActionResult SaveEdit(Domain.Entities.MyPerson model)
+        public ActionResult SaveEdit(Models.MyPerson model)
         {
             if (ModelState.IsValid)
             {
@@ -48,7 +67,17 @@ namespace WebStore1.Controllers
                 if (p != default(Domain.Entities.MyPerson))
                 {
                     wc.Persons.Remove(p);
-                    wc.Persons.Add(model);
+
+                    Domain.Entities.MyPerson ep = new Domain.Entities.MyPerson
+                    {
+                        FirstName = model.FirstName,
+                        LastName = model.LastName,
+                        age = model.age,
+                        position = model.position,
+                        hobbies = model.hobbies
+                    };
+
+                    wc.Persons.Add(ep);
                     int count = wc.SaveChanges();
                 }
 
